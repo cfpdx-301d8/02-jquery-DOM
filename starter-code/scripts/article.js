@@ -30,9 +30,9 @@ Article.prototype.toHtml = function() {
   // // 5. publication
   $newArticle.find('time[pubdate]').attr('title', this.publishedOn);
   $newArticle.find('time').text('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
-/* TODO: This cloned article is no longer a template, as it now
+/* DONE: This cloned article is no longer a template, as it now
 has real data attached to it. Remove the class from this new article! */
-  $newArticle.removeClass('article.template');
+  $newArticle.removeClass('template');
   return $newArticle;
 };
 
