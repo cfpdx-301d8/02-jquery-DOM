@@ -18,7 +18,7 @@ function Article (options) {
 Article.prototype.toHtml = function () {
   var $newArticle = $('article.template').clone();
   $newArticle.attr('data-category', this.category);
-  //TODO: We also need to fill in:
+  //doneTODO: We also need to fill in:
   // 1. author name
   $newArticle.find('address').children().text(this.author);
 
@@ -29,13 +29,15 @@ Article.prototype.toHtml = function () {
   $newArticle.find('h1').text(this.title);
 
   // 4. article body
-  $newArticle.find('section.article-body').text(this.body);
+  $newArticle.find('section.article-body').html(this.body);
 
   $newArticle.find('time[pubdate]').attr('title', this.publishedOn);
   $newArticle.find('time').text('about ' + parseInt((new Date() - new Date(this.publishedOn)) / 60 / 60 / 24 / 1000) + ' days ago');
-  /* TODO: This cloned article is no longer a template, as it now
+  /* doneTODO: This cloned article is no longer a template, as it now
   has real data attached to it. Remove the class from this new article! */
-  //   return $newArticle;
+
+  $newArticle.removeClass('template');
+  return $newArticle;
 };
 
 /* This sort method is a standard JavaScript Array function
