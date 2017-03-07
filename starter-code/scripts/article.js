@@ -15,20 +15,27 @@ function Article (options) {
   this.body = options.body;
 }
 
-Article.prototype.toHtml = function() {
-//   var $newArticle = $('article.template').clone();
-//   $newArticle.attr('data-category', this.category);
-//   /* TODO: We also need to fill in:
-//   1. author name
-//   2. author url
-//   3. article title
-//   4. article body
-//   5. publication*/
-//   $newArticle.find('time[pubdate]').attr('title', this.publishedOn);
-//   $newArticle.find('time').text('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
-// /* TODO: This cloned article is no longer a template, as it now
-// has real data attached to it. Remove the class from this new article! */
-//   return $newArticle;
+Article.prototype.toHtml = function () {
+  var $newArticle = $('article.template').clone();
+  $newArticle.attr('data-category', this.category);
+  //TODO: We also need to fill in:
+  // 1. author name
+  $newArticle.find('address').children().text(this.author);
+
+  // 2. author url
+  $newArticle.find('a[href]').attr('href', this.authorUrl);
+
+  // 3. article title
+  $newArticle.find('h1').text(this.title);
+
+  // 4. article body
+  $newArticle.find('section.article-body').text(this.body);
+
+  $newArticle.find('time[pubdate]').attr('title', this.publishedOn);
+  $newArticle.find('time').text('about ' + parseInt((new Date() - new Date(this.publishedOn)) / 60 / 60 / 24 / 1000) + ' days ago');
+  /* TODO: This cloned article is no longer a template, as it now
+  has real data attached to it. Remove the class from this new article! */
+  //   return $newArticle;
 };
 
 /* This sort method is a standard JavaScript Array function
