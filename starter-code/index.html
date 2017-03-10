@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Blog</title>
+    <script src="scripts/jquery-3.1.1.slim.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="vendor/styles/normalize.css">
     <link rel="stylesheet" href="vendor/icons.css">
@@ -33,9 +34,9 @@
         <section id="articles">
           <article class="template" data-category="cat">
             <header>
-              <h1>Title</h1>
+              <h1 id="title">Title</h1>
               <div class="byline">
-                By <address><a href="">Author Name</a></address>
+                By <address><a id="author" href="">Author Name</a></address>
                 published <time pubdate datetime="2000-01-01">Publish Time</time>
               </div>
             </header>
@@ -47,5 +48,7 @@
       &copy; 2017 Code Fellows | Static Blog | Happy Ipsum!
     </footer>
     <!-- // TODO: Intentionally vague: include all necessary script tags, in proper order! -->
+    <script src="scripts/blogArticles.js"></script>
+    <script src="scripts/article.js"></script>
   </body>
 </html>
